@@ -61,3 +61,5 @@ gem 'bootstrap-sass'
 
 gem 'bcrypt'
 
+gem 'devise'
+
