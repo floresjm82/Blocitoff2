@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   get 'structure/main_page'
 
   devise_for :users
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  root 'structure#main_page'
+  root 'users#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
