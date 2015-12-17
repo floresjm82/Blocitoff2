@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<h1>To Do List</h1>
+
+<table class="table">
+	<tr>
+		<th>Description</th>
+		<th>Days Left</th>
+		<th>Complete</th>
+	</tr>
+	<%= render current_user.items %>
+</table>
+
+
+<%= render "items/form" %>
+
+

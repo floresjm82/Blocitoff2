@@ -1,5 +1,12 @@
-require 'rails_helper'
+
 
 RSpec.describe Item, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	describe "attributes" do
+		it "should respond to name" do
+			item = Item.new
+			expect(item).to respond_to(:name)
+		end
+	end
+
 end

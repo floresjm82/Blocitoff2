@@ -63,3 +63,5 @@ gem 'bcrypt'
 
 gem 'devise'
 
+gem 'faker'
+

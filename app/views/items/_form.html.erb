@@ -1,0 +1,11 @@
+
+
+<%= form_for Item.new do |f| %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control', placeholder: "Enter new item" %>
+
+	<%= f.submit "Save", class: 'btn btn-success' %>
+
+<% end %>
+

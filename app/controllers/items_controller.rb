@@ -1,25 +1,22 @@
 class ItemsController < ApplicationController
 
-  def show
-    @item = Item.find(params[:id])
-  end
-
-  def new
-    @item = Item.new
-  end
+  before_action :authenticate_user!
 
   def create
 
-    @item = Item.new(item_params)
-    @item.user = current_user
+    # @item = Item.new
+    # @item.name = params[:item][:name]
+    # @item.user = current_user
+
+    @item = current_user.items.new(item_params)
 
     if @item.save
-      flash[:notice] = "Item was saved."
-      redirect_to items_show_path
+      flash[:notice] = "Item saved!"     
     else
-      flash [:error] = "There was an error saving the item to the list. Please try again."
-      render :new
+      flash[:error] = "Item not saved!"
     end
+
+    redirect_to current_user
 
   end
 
@@ -29,11 +26,18 @@ class ItemsController < ApplicationController
 
     if @item.destroy
       flash[:notice] = "\"#{@item}\" was deleted successuflly."
-      redirect_to items_show_path
     else
       flash[:error] = "There was an error deleting that item."
-      redirect_to items_show_path
     end
 
+    redirect_to current_user
+
+
+  end
+
+  private 
+
+  def item_params
+  	params.require(:item).permit(:name)
   end
 end
