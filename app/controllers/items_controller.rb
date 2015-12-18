@@ -30,7 +30,10 @@ class ItemsController < ApplicationController
       flash[:error] = "There was an error deleting that item."
     end
 
-    redirect_to current_user
+    respond_to do |format|
+      format.html
+      format.js
+    end
 
 
   end

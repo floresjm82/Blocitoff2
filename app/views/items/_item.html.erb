@@ -1,7 +1,7 @@
 <tr>
 		<td><%= item.name %></td>
 		<td>Days Left</td>
-		<td>Complete</td>
+		<td><%= link_to "", item, method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %></td>
 </tr>
 
 
