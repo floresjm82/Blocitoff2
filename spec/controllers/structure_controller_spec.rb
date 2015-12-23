@@ -1,7 +1,7 @@
 
 RSpec.describe StructureController, type: :controller do
 
-  describe "GET #main_page" do
+  describe "GET main_page" do
     it "returns http success" do
       get :main_page
       expect(response).to have_http_status(:success)
@@ -9,3 +9,5 @@ RSpec.describe StructureController, type: :controller do
   end
 
 end
+
+
