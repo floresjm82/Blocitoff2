@@ -65,3 +65,5 @@ gem 'devise'
 
 gem 'faker'
 
+gem 'figaro'
+
