@@ -1,15 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe ItemsController, type: :controller do
+  let(:my_user) do
+    user = User.new(name: "my name", email: "myemail@email.com", password: "hello")
+    user.skip_confirmation!
+    user.save!
+  end
+  let(:my_item) {Item.create!(name: "Testing123", user: my_user)}
 
-  let(:my_item) {Item.create!(name: "Testing123")}
-
-  it {should belong_to(:user)}
-  it {should validate_presence_of(:name)}
-  it {should validate_length_of(:name).is_at_least(100)}
+  
 
   describe "POST create" do
 #1 expect the count of Item instances in the database to increase by one.
+    before do 
+      sign_in my_user
+    end
+
   	it "increases the number of Item by 1" do
   		expect{post :create, item: {name: Faker::Lorem.sentence}}.to change(Item,:count).by(1)
   	end
@@ -25,6 +31,10 @@ RSpec.describe ItemsController, type: :controller do
   end
 
   describe "DELETE destroy" do
+    before do 
+      login_user
+    end
+
     it "deletes the item" do
       delete :destroy, {id: my_item.id}
 #2 we searched the database for a post with an id equal to my_item.id, returning an array and assigning the size of the array to "count".
