@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
 
+
 	let(:item) {Item.create!(name: "Testing 123")}
 
 	it {should belong_to(:user)}
@@ -14,6 +15,7 @@ RSpec.describe Item, type: :model do
 		end
 
 	end
+
 
 
 

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ItemsController, type: :controller do
+<<<<<<< HEAD
   let(:my_user) do
     user = User.new(name: "my name", email: "myemail@email.com", password: "hello")
     user.skip_confirmation!
@@ -52,5 +53,6 @@ Ajax changed this test
   end
 =end
   end
+
 
 end

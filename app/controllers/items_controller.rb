@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+<<<<<<< HEAD
   before_action :authenticate_user!
 
 
@@ -21,15 +22,42 @@ class ItemsController < ApplicationController
 
     redirect_to current_user
 
+=======
+def show
+    @item = Item.find(params[:id])
+  end
+
+  def new
+    @item = Item.new
+  end
+
+  def create
+
+    @item = Item.new(item_params)
+    @item.user = current_user
+
+    if @item.save
+      flash[:notice] = "Item was saved."
+      redirect_to root_path
+    else
+      flash [:error] = "There was an error saving the item to the list. Please try again."
+      render :new
+    end
+
+>>>>>>> 4457d879934592ba85110f87b329e1274213838a
   end
 
   def destroy
 
+<<<<<<< HEAD
 #2 searches for specific item to be deleted
+=======
+>>>>>>> 4457d879934592ba85110f87b329e1274213838a
     @item = Item.find(params[:id])
 
     if @item.destroy
       flash[:notice] = "\"#{@item}\" was deleted successuflly."
+<<<<<<< HEAD
     else
       flash[:error] = "There was an error deleting that item."
     end
@@ -48,3 +76,14 @@ class ItemsController < ApplicationController
   	params.require(:item).permit(:name)
   end
 end
+=======
+      redirect_to root_path
+    else
+      flash[:error] = "There was an error deleting that item."
+      redirect_to root_path
+    end
+
+  end
+
+end
+>>>>>>> 4457d879934592ba85110f87b329e1274213838a
